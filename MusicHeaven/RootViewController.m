@@ -27,7 +27,8 @@
             indexOfFileInSpecifiedColume    = _indexOfFileInSpecifiedColume,
             allFilesCounted                 = _allFilesCounted,
             allColumnsCounted               = _allColumnsCounted,
-            isShowNavBar                    = _isShowNavBar;
+            isShowNavBar                    = _isShowNavBar,
+            contentsVC                      = _contentsVC;
 
 - (id)init
 {
@@ -63,7 +64,8 @@
             _allFilesCounted += numberOfFilesInThisColume;      //得到所有栏目总共的文章个数
         }
         
-        //手势
+        //***************   手势   ***************************
+        //***************************************************
         self.swipeLeft = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeToLeft)];   //向左滑动
         [_swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
         
@@ -143,35 +145,50 @@
     [contentsBtn setImage:bbiImageHL forState:UIControlStateHighlighted];
     [contentsBtn setShowsTouchWhenHighlighted:YES];
     [contentsBtn addTarget:self action:@selector(popoverContentsMenu:) forControlEvents:UIControlEventTouchUpInside];
-    [contentsBtn setFrame:CGRectMake(0.0, 2.0f, 40, 40)];
+    [contentsBtn setFrame:CGRectMake(25.0, 2.0f, 40, 40)];
     
-    UIBarButtonItem *bbi = [[UIBarButtonItem alloc]initWithCustomView:contentsBtn];
+    UIImageView *leftBarBtnItemImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 2, 80, 40)];
+    [leftBarBtnItemImageView setUserInteractionEnabled:YES];
+    [leftBarBtnItemImageView addSubview:contentsBtn];
+    
+    UIBarButtonItem *bbi = [[UIBarButtonItem alloc]initWithCustomView:leftBarBtnItemImageView];
     [self.navigationItem setLeftBarButtonItem:bbi];
     
     UIButton *playBtnOnNav = [UIButton buttonWithType:UIButtonTypeCustom];
     UIButton *settingBtnOnNav = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *backBtnOnNav = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [playBtnOnNav setEnabled:YES];
     [playBtnOnNav setShowsTouchWhenHighlighted:YES];
     [settingBtnOnNav setEnabled:YES];
     [settingBtnOnNav setShowsTouchWhenHighlighted:YES];
+    [backBtnOnNav setEnabled:YES];
+    [backBtnOnNav setShowsTouchWhenHighlighted:YES];
     
     [playBtnOnNav addTarget:self action:@selector(playButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [settingBtnOnNav addTarget:self action:@selector(settingButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [backBtnOnNav addTarget:self action:@selector(backButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    [playBtnOnNav setFrame:CGRectMake(0, 2, 40, 40)];
-    [settingBtnOnNav setFrame:CGRectMake(44, 2, 40, 40)];
+    [backBtnOnNav setFrame:CGRectMake(0, 2, 40, 40)];
+    [playBtnOnNav setFrame:CGRectMake(44, 2, 40, 40)];
+    [settingBtnOnNav setFrame:CGRectMake(88, 2, 40, 40)];
     
-    [playBtnOnNav setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"bofang" ofType:@"png" inDirectory:@"UI"]] forState:UIControlStateNormal];
-    [playBtnOnNav setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"bofangHighLighted" ofType:@"png" inDirectory:@"UI"]] forState:UIControlStateHighlighted];
+    [backBtnOnNav setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"fanhuijian" ofType:@"png" inDirectory:@"UI"]] forState:UIControlStateNormal];
+    [backBtnOnNav setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"fanhuijianHighLighted" ofType:@"png" inDirectory:@"UI"]] forState:UIControlStateHighlighted];
+    
+    [playBtnOnNav setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"bofangjian" ofType:@"png" inDirectory:@"UI"]] forState:UIControlStateNormal];
+    [playBtnOnNav setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"bofangjianHighLighted" ofType:@"png" inDirectory:@"UI"]] forState:UIControlStateHighlighted];
     
     [settingBtnOnNav setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"shezhijian" ofType:@"png" inDirectory:@"UI"]] forState:UIControlStateNormal];
     [settingBtnOnNav setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"shezhijianHighLighted" ofType:@"png" inDirectory:@"UI"]] forState:UIControlStateHighlighted];
     
-    UIImageView *rightNavBarImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 86, 44)];
+    UIImageView *rightNavBarImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150, 44)];
     [rightNavBarImageView setUserInteractionEnabled:YES];
+    
     [rightNavBarImageView addSubview:playBtnOnNav];
     [rightNavBarImageView addSubview:settingBtnOnNav];
+    [rightNavBarImageView addSubview:backBtnOnNav];
+    
     UIBarButtonItem *rightNavBarBtnItem = [[UIBarButtonItem alloc]initWithCustomView:rightNavBarImageView];
     
     [[self navigationItem] setRightBarButtonItem:rightNavBarBtnItem];
@@ -405,7 +422,19 @@
 
 - (void)popoverContentsMenu:(id)sender
 {
+    if (self.contentsVC == nil) {
+        self.contentsVC = [[ContentsViewController alloc]initWithNibName:nil bundle:nil];
+        _contentsVC.dataSource = self;
+        _contentsVC.allColumnsCounted = self.allColumnsCounted;
+    }
     
+    if (self.popoverContentsVC == nil) {
+        self.popoverContentsVC = [[UIPopoverController alloc]initWithContentViewController:self.contentsVC];
+    }
+    
+    CGRect aRect = CGRectMake(10, 0, 85, 30);
+    
+    [_popoverContentsVC presentPopoverFromRect:aRect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (void)playButtonPressed:(id)sender
@@ -414,6 +443,11 @@
 }
 
 - (void)settingButtonPressed:(id)sender
+{
+    
+}
+
+- (void)backButtonPressed:(id)sender
 {
     
 }
@@ -454,6 +488,14 @@
     [self.loadingView setHidden:YES];
     
     NSLog(@"---- %d",[_loadingIndicator isAnimating]);
+}
+
+
+#pragma mark - ContentsViewControllerDataSource 
+
+- (NSArray *)getColumnTrumbsImageWithDataSource:(id)dataSource
+{
+    return [self.data allColumnTrumbsArray];
 }
 
 

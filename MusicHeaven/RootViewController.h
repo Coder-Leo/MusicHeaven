@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "DataModal.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ContentsViewController.h"
 
 
-@interface RootViewController : UIViewController<UIGestureRecognizerDelegate, UIWebViewDelegate>
+@interface RootViewController : UIViewController<UIGestureRecognizerDelegate, UIWebViewDelegate, ContentsViewControllerDataSource>
 
 @property (nonatomic, strong) DataModal *data;
 
@@ -35,6 +36,9 @@
 
 @property (nonatomic, assign) BOOL isShowNavBar;
 
+@property (nonatomic, strong) ContentsViewController *contentsVC;
+@property (nonatomic, strong) UIPopoverController *popoverContentsVC;
+
 
 - (void)swipeToLeft;
 - (void)swipeToRight;
@@ -50,5 +54,6 @@
 - (void)popoverContentsMenu:(id)sender;
 - (void)playButtonPressed:(id)sender;
 - (void)settingButtonPressed:(id)sender;
+- (void)backButtonPressed:(id)sender;
 
 @end

@@ -12,7 +12,8 @@ static DataModal *defaultModal;
 
 @implementation DataModal
 
-@synthesize allPacksArray = _allPacksArray;
+@synthesize allPacksArray           = _allPacksArray;
+@synthesize allColumnTrumbsArray    = _allColumnTrumbsArray;
 
 + (DataModal *)defaultModal
 {
@@ -76,6 +77,8 @@ static DataModal *defaultModal;
         {
             NSLog(@"empty array!");
         }
+        
+        self.allColumnTrumbsArray = [[NSBundle mainBundle]pathsForResourcesOfType:@"png" inDirectory:@"ColumnTrumbs"];
                 
     }
     

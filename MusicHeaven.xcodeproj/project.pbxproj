@@ -18,6 +18,10 @@
 		8BAB171D1682DB4C00F37F74 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAB171C1682DB4C00F37F74 /* RootViewController.m */; };
 		8BBA31311687F7F900B5C634 /* UI in Resources */ = {isa = PBXBuildFile; fileRef = 8BBA31301687F7F900B5C634 /* UI */; };
 		CE90AF981684C55100C72CC7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE90AF971684C55100C72CC7 /* QuartzCore.framework */; };
+		CEC1BDC51688AE200027AEC9 /* ContentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC1BDC41688AE200027AEC9 /* ContentsCell.m */; };
+		CEC1BDC91688AE3E0027AEC9 /* ContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC1BDC81688AE3E0027AEC9 /* ContentsViewController.m */; };
+		CEC1BDCC1688BC460027AEC9 /* HeaderForContentsTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC1BDCB1688BC460027AEC9 /* HeaderForContentsTable.m */; };
+		CEC1BDCE1688C1400027AEC9 /* ColumnTrumbs in Resources */ = {isa = PBXBuildFile; fileRef = CEC1BDCD1688C1400027AEC9 /* ColumnTrumbs */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,13 @@
 		8BAB171C1682DB4C00F37F74 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		8BBA31301687F7F900B5C634 /* UI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UI; sourceTree = "<group>"; };
 		CE90AF971684C55100C72CC7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CEC1BDC31688AE200027AEC9 /* ContentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContentsCell.h; path = MusicHeaven/ContentsCell.h; sourceTree = "<group>"; };
+		CEC1BDC41688AE200027AEC9 /* ContentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContentsCell.m; path = MusicHeaven/ContentsCell.m; sourceTree = "<group>"; };
+		CEC1BDC71688AE3E0027AEC9 /* ContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentsViewController.h; sourceTree = "<group>"; };
+		CEC1BDC81688AE3E0027AEC9 /* ContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentsViewController.m; sourceTree = "<group>"; };
+		CEC1BDCA1688BC460027AEC9 /* HeaderForContentsTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderForContentsTable.h; sourceTree = "<group>"; };
+		CEC1BDCB1688BC460027AEC9 /* HeaderForContentsTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderForContentsTable.m; sourceTree = "<group>"; };
+		CEC1BDCD1688C1400027AEC9 /* ColumnTrumbs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ColumnTrumbs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +69,7 @@
 		8BAB16EC1682B57000F37F74 = {
 			isa = PBXGroup;
 			children = (
+				CEC1BDCD1688C1400027AEC9 /* ColumnTrumbs */,
 				8BBA31301687F7F900B5C634 /* UI */,
 				CE90AF931684C4C500C72CC7 /* Views */,
 				8BAB17121682B71F00F37F74 /* html */,
@@ -93,6 +105,8 @@
 				8BAB170B1682B57000F37F74 /* AppDelegate.m */,
 				8BAB171B1682DB4C00F37F74 /* RootViewController.h */,
 				8BAB171C1682DB4C00F37F74 /* RootViewController.m */,
+				CEC1BDC71688AE3E0027AEC9 /* ContentsViewController.h */,
+				CEC1BDC81688AE3E0027AEC9 /* ContentsViewController.m */,
 				8BAB17021682B57000F37F74 /* Supporting Files */,
 				8BAB17141682B74300F37F74 /* DataModal.h */,
 				8BAB17151682B74300F37F74 /* DataModal.m */,
@@ -114,6 +128,10 @@
 		CE90AF931684C4C500C72CC7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CEC1BDC31688AE200027AEC9 /* ContentsCell.h */,
+				CEC1BDC41688AE200027AEC9 /* ContentsCell.m */,
+				CEC1BDCA1688BC460027AEC9 /* HeaderForContentsTable.h */,
+				CEC1BDCB1688BC460027AEC9 /* HeaderForContentsTable.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -172,6 +190,7 @@
 				8BAB17061682B57000F37F74 /* InfoPlist.strings in Resources */,
 				8BAB17131682B71F00F37F74 /* html in Resources */,
 				8BBA31311687F7F900B5C634 /* UI in Resources */,
+				CEC1BDCE1688C1400027AEC9 /* ColumnTrumbs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +205,9 @@
 				8BAB170C1682B57000F37F74 /* AppDelegate.m in Sources */,
 				8BAB17161682B74300F37F74 /* DataModal.m in Sources */,
 				8BAB171D1682DB4C00F37F74 /* RootViewController.m in Sources */,
+				CEC1BDC51688AE200027AEC9 /* ContentsCell.m in Sources */,
+				CEC1BDC91688AE3E0027AEC9 /* ContentsViewController.m in Sources */,
+				CEC1BDCC1688BC460027AEC9 /* HeaderForContentsTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

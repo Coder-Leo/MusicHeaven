@@ -11,6 +11,7 @@
 @interface DataModal : NSObject
 
 @property (nonatomic, strong) NSArray *allPacksArray;
+@property (nonatomic, strong) NSArray *allColumnTrumbsArray;
 
 + (DataModal *)defaultModal;
 
