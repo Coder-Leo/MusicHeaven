@@ -28,6 +28,7 @@
             allFilesCounted                 = _allFilesCounted,
             allColumnsCounted               = _allColumnsCounted,
             isShowNavBar                    = _isShowNavBar,
+            popoverContentsVC               = _popoverContentsVC,
             contentsVC                      = _contentsVC;
 
 - (id)init
