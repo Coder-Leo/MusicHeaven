@@ -11,6 +11,13 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ContentsViewController.h"
 
+typedef enum
+{
+    MHSwipeToNone = 0,
+    MHSwipeToLeft,
+    MHSwipeToRight,
+}MHSwipeDirection;
+
 
 @interface RootViewController : UIViewController<UIGestureRecognizerDelegate, UIWebViewDelegate, ContentsViewControllerDataSource>
 
@@ -33,6 +40,8 @@
 @property (nonatomic, assign) NSUInteger indexOfFileInSpecifiedColume;    //当前专辑中的文件序号
 @property (nonatomic, assign) NSUInteger allFilesCounted;           //总页数
 @property (nonatomic, assign) NSUInteger allColumnsCounted;         //总栏目数
+
+@property (nonatomic, assign) NSUInteger swipeDirection;
 
 @property (nonatomic, assign) BOOL isShowNavBar;
 

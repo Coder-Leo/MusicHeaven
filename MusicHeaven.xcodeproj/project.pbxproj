@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0492464A168923A80036A923 /* bofang.png in Resources */ = {isa = PBXBuildFile; fileRef = 0492462E168923A80036A923 /* bofang.png */; };
 		0492464B168923A80036A923 /* bofang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0492462F168923A80036A923 /* bofang@2x.png */; };
 		0492464C168923A80036A923 /* bofangHighLighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 04924630168923A80036A923 /* bofangHighLighted.png */; };
 		0492464D168923A80036A923 /* bofangHighLighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04924631168923A80036A923 /* bofangHighLighted@2x.png */; };
@@ -35,15 +34,13 @@
 		04924663168923A80036A923 /* zanting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04924647168923A80036A923 /* zanting@2x.png */; };
 		04924664168923A80036A923 /* zantinganniuHighLighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 04924648168923A80036A923 /* zantinganniuHighLighted.png */; };
 		04924665168923A80036A923 /* zantinganniuHighLighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04924649168923A80036A923 /* zantinganniuHighLighted@2x.png */; };
-		0492466A168923CB0036A923 /* colume1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04924667168923CB0036A923 /* colume1.png */; };
-		0492466B168923CB0036A923 /* colume2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04924668168923CB0036A923 /* colume2.png */; };
-		0492466C168923CB0036A923 /* colume3.png in Resources */ = {isa = PBXBuildFile; fileRef = 04924669168923CB0036A923 /* colume3.png */; };
 		04924670168924690036A923 /* DataModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 0492466F168924690036A923 /* DataModal.m */; };
 		04924676168924730036A923 /* ContentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04924673168924730036A923 /* ContentsCell.m */; };
 		04924677168924730036A923 /* HeaderForContentsTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 04924675168924730036A923 /* HeaderForContentsTable.m */; };
 		0492467F168924780036A923 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0492467A168924780036A923 /* AppDelegate.m */; };
 		04924680168924780036A923 /* ContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0492467C168924780036A923 /* ContentsViewController.m */; };
 		04924681168924780036A923 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0492467E168924780036A923 /* RootViewController.m */; };
+		8B078FA11689688B00818304 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 8B078FA01689688B00818304 /* images */; };
 		8BAB16FC1682B57000F37F74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAB16FB1682B57000F37F74 /* UIKit.framework */; };
 		8BAB16FE1682B57000F37F74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAB16FD1682B57000F37F74 /* Foundation.framework */; };
 		8BAB17001682B57000F37F74 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAB16FF1682B57000F37F74 /* CoreGraphics.framework */; };
@@ -54,7 +51,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0492462E168923A80036A923 /* bofang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bofang.png; sourceTree = "<group>"; };
 		0492462F168923A80036A923 /* bofang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bofang@2x.png"; sourceTree = "<group>"; };
 		04924630168923A80036A923 /* bofangHighLighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bofangHighLighted.png; sourceTree = "<group>"; };
 		04924631168923A80036A923 /* bofangHighLighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bofangHighLighted@2x.png"; sourceTree = "<group>"; };
@@ -82,9 +78,6 @@
 		04924647168923A80036A923 /* zanting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zanting@2x.png"; sourceTree = "<group>"; };
 		04924648168923A80036A923 /* zantinganniuHighLighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zantinganniuHighLighted.png; sourceTree = "<group>"; };
 		04924649168923A80036A923 /* zantinganniuHighLighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zantinganniuHighLighted@2x.png"; sourceTree = "<group>"; };
-		04924667168923CB0036A923 /* colume1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colume1.png; sourceTree = "<group>"; };
-		04924668168923CB0036A923 /* colume2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colume2.png; sourceTree = "<group>"; };
-		04924669168923CB0036A923 /* colume3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colume3.png; sourceTree = "<group>"; };
 		0492466E168924690036A923 /* DataModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModal.h; sourceTree = "<group>"; };
 		0492466F168924690036A923 /* DataModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModal.m; sourceTree = "<group>"; };
 		04924672168924730036A923 /* ContentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentsCell.h; sourceTree = "<group>"; };
@@ -97,6 +90,7 @@
 		0492467C168924780036A923 /* ContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentsViewController.m; sourceTree = "<group>"; };
 		0492467D168924780036A923 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		0492467E168924780036A923 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		8B078FA01689688B00818304 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		8BAB16F71682B57000F37F74 /* MusicHeaven.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicHeaven.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BAB16FB1682B57000F37F74 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BAB16FD1682B57000F37F74 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -124,19 +118,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04924629168922E20036A923 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				04924666168923CB0036A923 /* ColumnTrumbs */,
-				0492462D168923A80036A923 /* UI */,
-			);
-			name = images;
-			sourceTree = "<group>";
-		};
 		0492462D168923A80036A923 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				0492462E168923A80036A923 /* bofang.png */,
 				0492462F168923A80036A923 /* bofang@2x.png */,
 				04924630168923A80036A923 /* bofangHighLighted.png */,
 				04924631168923A80036A923 /* bofangHighLighted@2x.png */,
@@ -166,16 +150,6 @@
 				04924649168923A80036A923 /* zantinganniuHighLighted@2x.png */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		04924666168923CB0036A923 /* ColumnTrumbs */ = {
-			isa = PBXGroup;
-			children = (
-				04924667168923CB0036A923 /* colume1.png */,
-				04924668168923CB0036A923 /* colume2.png */,
-				04924669168923CB0036A923 /* colume3.png */,
-			);
-			path = ColumnTrumbs;
 			sourceTree = "<group>";
 		};
 		0492466D168924690036A923 /* Models */ = {
@@ -217,6 +191,7 @@
 		8BAB16EC1682B57000F37F74 = {
 			isa = PBXGroup;
 			children = (
+				8B078FA01689688B00818304 /* images */,
 				8BAB17121682B71F00F37F74 /* html */,
 				8BAB17011682B57000F37F74 /* MusicHeaven */,
 				8BAB16FA1682B57000F37F74 /* Frameworks */,
@@ -257,7 +232,7 @@
 		8BAB17021682B57000F37F74 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				04924629168922E20036A923 /* images */,
+				0492462D168923A80036A923 /* UI */,
 				8BAB17031682B57000F37F74 /* MusicHeaven-Info.plist */,
 				8BAB17041682B57000F37F74 /* InfoPlist.strings */,
 				8BAB17071682B57000F37F74 /* main.m */,
@@ -319,7 +294,6 @@
 			files = (
 				8BAB17061682B57000F37F74 /* InfoPlist.strings in Resources */,
 				8BAB17131682B71F00F37F74 /* html in Resources */,
-				0492464A168923A80036A923 /* bofang.png in Resources */,
 				0492464B168923A80036A923 /* bofang@2x.png in Resources */,
 				0492464C168923A80036A923 /* bofangHighLighted.png in Resources */,
 				0492464D168923A80036A923 /* bofangHighLighted@2x.png in Resources */,
@@ -347,9 +321,7 @@
 				04924663168923A80036A923 /* zanting@2x.png in Resources */,
 				04924664168923A80036A923 /* zantinganniuHighLighted.png in Resources */,
 				04924665168923A80036A923 /* zantinganniuHighLighted@2x.png in Resources */,
-				0492466A168923CB0036A923 /* colume1.png in Resources */,
-				0492466B168923CB0036A923 /* colume2.png in Resources */,
-				0492466C168923CB0036A923 /* colume3.png in Resources */,
+				8B078FA11689688B00818304 /* images in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

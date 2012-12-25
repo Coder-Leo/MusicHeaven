@@ -16,12 +16,16 @@
 
 - (NSArray *)getColumnTrumbsImageWithDataSource:(id)dataSource;
 
+- (void)swipeToFirstArticleOfSpecifiedColumn:(NSUInteger)index;
+- (void)dismissContentsViewController;
+
 @end
 
 @interface ContentsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, assign) id<ContentsViewControllerDataSource> dataSource;
 
+@property (nonatomic, strong) NSArray *allTrumbsArray;
 @property (nonatomic, strong) UITableView *contentsTableView;
 
 @property (nonatomic, assign) NSUInteger allColumnsCounted;         //总栏目数

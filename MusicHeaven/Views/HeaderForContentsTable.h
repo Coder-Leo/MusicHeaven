@@ -10,4 +10,6 @@
 
 @interface HeaderForContentsTable : UIView
 
+@property (nonatomic, strong) UIImageView *headerImageView;
+
 @end

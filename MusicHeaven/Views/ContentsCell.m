@@ -8,7 +8,9 @@
 
 #import "ContentsCell.h"
 
-@implementation ContentsCell
+#define ContentsCellFrame CGRectMake(0, 0, 320, 377)
+
+@implementation ContentsCell 
 
 @synthesize columnImageView = _columnImageView;
 
@@ -17,7 +19,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        self.columnImageView = [[UIImageView alloc]initWithFrame:CGRectZero];
+        self.columnImageView = [[UIImageView alloc]initWithFrame:ContentsCellFrame];
         [_columnImageView setUserInteractionEnabled:YES];
         [_columnImageView setBackgroundColor:[UIColor blueColor]];
         [self.contentView addSubview:self.columnImageView];
@@ -34,7 +36,10 @@
 
 - (void)layoutSubviews
 {
-    
+    [super layoutSubviews];
+//    [self.columnImageView setFrame:CGRectMake(0, 0, 320, 377)];
+//    NSLog(@"-- -- -- %@",self.columnImageView.image);
+//    [self.columnImageView setImage:[UIImage imageNamed:@"liebiao.png"]];
 }
 
 @end

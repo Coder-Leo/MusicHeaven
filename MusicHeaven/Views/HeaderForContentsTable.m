@@ -8,13 +8,19 @@
 
 #import "HeaderForContentsTable.h"
 
+#define TableHeaderFrame CGRectMake(0, 0, 320, 144)
+
 @implementation HeaderForContentsTable
+
+@synthesize headerImageView = _headerImageView;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.headerImageView = [[UIImageView alloc]initWithFrame:TableHeaderFrame];
+        [self addSubview:self.headerImageView];
     }
     return self;
 }
@@ -30,8 +36,13 @@
 
 - (void)layoutSubviews
 {
-    [self setFrame:CGRectMake(0, 0, 320, 200)];
-    [self setBackgroundColor:[UIColor purpleColor]];
+    [super layoutSubviews];
+    
+//    NSLog(@"%@",NSStringFromSelector(_cmd));
+//    [self setFrame:CGRectMake(0, 0, 320, 144)];
+//    [self setBackgroundColor:[UIColor purpleColor]];
+//    [self.headerImageView setImage:[UIImage imageNamed:@"biaotou.png"]];
+    
 }
 
 @end

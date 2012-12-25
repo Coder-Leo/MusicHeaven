@@ -78,8 +78,13 @@ static DataModal *defaultModal;
             NSLog(@"empty array!");
         }
         
-        self.allColumnTrumbsArray = [[NSBundle mainBundle]pathsForResourcesOfType:@"png" inDirectory:@"ColumnTrumbs"];
-                
+        self.allColumnTrumbsArray = [[NSBundle mainBundle]pathsForResourcesOfType:@"png" inDirectory:@"images/ColumnTrumbs"];
+        
+//        for (NSString *imageName in self.allColumnTrumbsArray)
+//        {
+//            NSArray *namePathArray = [imageName componentsSeparatedByString:@"/"];
+//            NSLog(@"--==--== %@",[namePathArray lastObject]);
+//        }
     }
     
     return self;

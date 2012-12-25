@@ -27,6 +27,7 @@
             indexOfFileInSpecifiedColume    = _indexOfFileInSpecifiedColume,
             allFilesCounted                 = _allFilesCounted,
             allColumnsCounted               = _allColumnsCounted,
+            swipeDirection                  = _swipeDirection,
             isShowNavBar                    = _isShowNavBar,
             popoverContentsVC               = _popoverContentsVC,
             contentsVC                      = _contentsVC;
@@ -138,15 +139,16 @@
     
     //******************** 导航按钮 *********************
     //**************************************************
-    UIImage *bbiImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"mulu" ofType:@"png" inDirectory:@"UI"]];
-    UIImage *bbiImageHL = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"muluHighLighted" ofType:@"png" inDirectory:@"UI"]];
+
+    UIImage *bbiImage = [UIImage imageNamed:@"mulu.png"];
+    UIImage *bbiImageHL = [UIImage imageNamed:@"muluHighLighted.png"];
     
     UIButton *contentsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [contentsBtn setImage:bbiImage forState:UIControlStateNormal];
     [contentsBtn setImage:bbiImageHL forState:UIControlStateHighlighted];
     [contentsBtn setShowsTouchWhenHighlighted:YES];
     [contentsBtn addTarget:self action:@selector(popoverContentsMenu:) forControlEvents:UIControlEventTouchUpInside];
-    [contentsBtn setFrame:CGRectMake(25.0, 2.0f, 40, 40)];
+    [contentsBtn setFrame:CGRectMake(8.0f, 2.0f, 40, 40)];
     
     UIImageView *leftBarBtnItemImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 2, 80, 40)];
     [leftBarBtnItemImageView setUserInteractionEnabled:YES];
@@ -174,14 +176,14 @@
     [playBtnOnNav setFrame:CGRectMake(44, 2, 40, 40)];
     [settingBtnOnNav setFrame:CGRectMake(88, 2, 40, 40)];
     
-    [backBtnOnNav setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"fanhuijian" ofType:@"png" inDirectory:@"UI"]] forState:UIControlStateNormal];
-    [backBtnOnNav setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"fanhuijianHighLighted" ofType:@"png" inDirectory:@"UI"]] forState:UIControlStateHighlighted];
+    [backBtnOnNav setBackgroundImage:[UIImage imageNamed:@"fanhuijian.png"] forState:UIControlStateNormal];
+    [backBtnOnNav setBackgroundImage:[UIImage imageNamed:@"fanhuijianHighLighted.png"] forState:UIControlStateHighlighted];
     
-    [playBtnOnNav setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"bofangjian" ofType:@"png" inDirectory:@"UI"]] forState:UIControlStateNormal];
-    [playBtnOnNav setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"bofangjianHighLighted" ofType:@"png" inDirectory:@"UI"]] forState:UIControlStateHighlighted];
+    [playBtnOnNav setBackgroundImage:[UIImage imageNamed:@"bofangjian.png"] forState:UIControlStateNormal];
+    [playBtnOnNav setBackgroundImage:[UIImage imageNamed:@"bofangjianHighLighted.png"] forState:UIControlStateHighlighted];
     
-    [settingBtnOnNav setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"shezhijian" ofType:@"png" inDirectory:@"UI"]] forState:UIControlStateNormal];
-    [settingBtnOnNav setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"shezhijianHighLighted" ofType:@"png" inDirectory:@"UI"]] forState:UIControlStateHighlighted];
+    [settingBtnOnNav setBackgroundImage:[UIImage imageNamed:@"shezhijian.png"] forState:UIControlStateNormal];
+    [settingBtnOnNav setBackgroundImage:[UIImage imageNamed:@"shezhijianHighLighted.png"] forState:UIControlStateHighlighted];
     
     UIImageView *rightNavBarImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150, 44)];
     [rightNavBarImageView setUserInteractionEnabled:YES];
@@ -238,14 +240,15 @@
     
     if (self.loadingView) {
         [self.webViewNew addSubview:self.loadingView];
-        NSLog(@"--- --- self.loadingView is exist!%@",self.loadingView);
+//        NSLog(@"--- --- self.loadingView is exist!%@",self.loadingView);
     }
     
     if (_currentPageNumber < _allFilesCounted -1)
     {
-        NSLog(@"_currentPageNumber < _allFilesCounted");
+//        NSLog(@"_currentPageNumber < _allFilesCounted");
         
         _currentPageNumber +=1;
+        self.indexOfSpecifiedColume = [self getIndexOfColumn];
         [self.webViewNew loadRequest:[self getRequestWithColumnIndex:[self getIndexOfColumn] WithDataIndex:[self getIndexOfFileInSpecifiedColumn]]];
         
         CGRect aRect = self.webView.frame;
@@ -270,7 +273,7 @@
     NSLog(@"--- %@",NSStringFromSelector(_cmd));
     
     if (self.webViewNew == nil) {
-        NSLog(@"--- self.webViewNew == ni");
+//        NSLog(@"--- self.webViewNew == ni");
         self.webViewNew = [[UIWebView alloc]init];
         _webViewNew.delegate = self;
         [_webViewNew addSubview:self.loadingView];
@@ -283,16 +286,17 @@
     
     if (self.loadingView) {
         [self.webViewNew addSubview:self.loadingView];
-        NSLog(@"--- --- self.loadingView is exist!%@",self.loadingView);
+//        NSLog(@"--- --- self.loadingView is exist!%@",self.loadingView);
     }
 
     
     if (_currentPageNumber > 0)
     {
-        NSLog(@"--- self.dataIndex > 1");
+//        NSLog(@"--- self.dataIndex > 1");
         
         _currentPageNumber -=1;
         
+        self.indexOfSpecifiedColume = [self getIndexOfColumn];
         [self.webViewNew loadRequest:[self getRequestWithColumnIndex:[self getIndexOfColumn] WithDataIndex:[self getIndexOfFileInSpecifiedColumn]]];
         
         CGRect aRect = self.webView.frame;
@@ -317,12 +321,12 @@
     NSLog(@"%@",NSStringFromSelector(_cmd));
     
     if (_isShowNavBar) {
-        NSLog(@"hides bar");
+//        NSLog(@"hides bar");
         self.navigationController.navigationBarHidden = YES;
         _isShowNavBar = !_isShowNavBar;
     }else
     {
-        NSLog(@"shows bar");
+//        NSLog(@"shows bar");
         
         self.navigationController.navigationBarHidden = NO;
         _isShowNavBar = !_isShowNavBar;
@@ -421,11 +425,14 @@
     return 0;
 }
 
+
 - (void)popoverContentsMenu:(id)sender
 {
     if (self.contentsVC == nil) {
         self.contentsVC = [[ContentsViewController alloc]initWithNibName:nil bundle:nil];
-        _contentsVC.dataSource = self;
+        self.contentsVC.dataSource = self;
+
+        NSLog(@" $ $ %@",_contentsVC.allTrumbsArray);
         _contentsVC.allColumnsCounted = self.allColumnsCounted;
     }
     
@@ -478,7 +485,7 @@
 //    [self.loadingView.loadingIndicator setHidden:NO];
     [self.loadingIndicator startAnimating];
     
-    NSLog(@"---- %d",[_loadingIndicator isAnimating]);
+//    NSLog(@"---- %d",[_loadingIndicator isAnimating]);
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -488,7 +495,7 @@
     [self.loadingIndicator stopAnimating];
     [self.loadingView setHidden:YES];
     
-    NSLog(@"---- %d",[_loadingIndicator isAnimating]);
+//    NSLog(@"---- %d",[_loadingIndicator isAnimating]);
 }
 
 
@@ -499,5 +506,110 @@
     return [self.data allColumnTrumbsArray];
 }
 
+- (void)swipeToFirstArticleOfSpecifiedColumn:(NSUInteger)index
+{
+//    NSLog(@"-②-");
+    
+    if (self.indexOfSpecifiedColume > index) 
+    {
+//        NSLog(@"-③- ，self.indexOfSpecifiedColume = %d, self.swipeDirection == MHSwipeToRight",self.indexOfSpecifiedColume);
+        self.swipeDirection = MHSwipeToRight;
+        self.indexOfSpecifiedColume = index;
+    }else if (self.indexOfSpecifiedColume < index)
+    {
+//        NSLog(@"-④- ，self.indexOfSpecifiedColume = %d, self.swipeDirection == MHSwipeToRight",self.indexOfSpecifiedColume);
+//        NSLog(@"-④- self.swipeDirection == MHSwipeToLeft");
+        self.swipeDirection = MHSwipeToLeft;
+        self.indexOfSpecifiedColume = index;
+    }else {
+        if (self.indexOfFileInSpecifiedColume != 0) 
+        {
+//            NSLog(@"-⑤- self.swipeDirection == MHSwipeToRight");
+            self.swipeDirection = MHSwipeToRight;
+            self.indexOfSpecifiedColume = index;
+        }else 
+        {
+            self.swipeDirection = MHSwipeToNone;
+        }
+    }
+    
+    
+    if (self.swipeDirection == MHSwipeToLeft) 
+    {
+       
+        
+        if (self.webViewNew == nil) {
+            self.webViewNew = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+            _webViewNew.delegate = self;
+            [(UIScrollView *)[[_webViewNew subviews] objectAtIndex:0] setBounces:NO];
+            [_webViewNew addSubview:self.loadingView];
+            _webViewNew.scalesPageToFit = YES;
+        }
+        
+        [self.webViewNew addGestureRecognizer:self.singleTap];
+        
+        if (self.loadingView) {
+            [self.webViewNew addSubview:self.loadingView];
+        }
+        
+        
+        [self.webViewNew loadRequest:[self getRequestWithColumnIndex:index WithDataIndex:0]];
+            
+        CGRect aRect = self.webView.frame;
+            
+        self.webViewNew.frame = CGRectOffset(aRect, 768, 0);
+        [self.view addSubview:self.webViewNew];
+            
+        [UIView beginAnimations:NULL context:nil];
+        [UIView setAnimationDuration:0.26];
+        [UIView setAnimationDelegate:self];
+        self.webView.frame = CGRectOffset(aRect, -768, 0);
+        self.webViewNew.frame = CGRectOffset(aRect, 0, 0);
+        [UIView setAnimationDidStopSelector:@selector(animationDidStop)];
+            
+        [UIView commitAnimations];
+
+    }else if (self.swipeDirection == MHSwipeToRight) {
+        NSLog(@"self.swipeDirection == MHSwipeToRight");
+        
+        if (self.webViewNew == nil) {
+            self.webViewNew = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+            _webViewNew.delegate = self;
+            [(UIScrollView *)[[_webViewNew subviews] objectAtIndex:0] setBounces:NO];
+            [_webViewNew addSubview:self.loadingView];
+            _webViewNew.scalesPageToFit = YES;
+        }
+        
+        [self.webViewNew addGestureRecognizer:self.singleTap];
+        
+        if (self.loadingView) {
+            [self.webViewNew addSubview:self.loadingView];
+            //        NSLog(@"--- --- self.loadingView is exist!%@",self.loadingView);
+        }
+        
+        
+        [self.webViewNew loadRequest:[self getRequestWithColumnIndex:index WithDataIndex:0]];
+        
+        CGRect aRect = self.webView.frame;
+        
+        self.webViewNew.frame = CGRectOffset(aRect, -768, 0);
+        [self.view addSubview:self.webViewNew];
+        
+        [UIView beginAnimations:NULL context:nil];
+        [UIView setAnimationDuration:0.32];
+        [UIView setAnimationDelegate:self];
+        self.webView.frame = CGRectOffset(aRect, 768, 0);
+        self.webViewNew.frame = CGRectOffset(aRect, 0, 0);
+        [UIView setAnimationDidStopSelector:@selector(animationDidStop)];
+        
+        [UIView commitAnimations];
+
+    }
+}
+
+- (void)dismissContentsViewController
+{
+    [self.popoverContentsVC dismissPopoverAnimated:YES];
+}
 
 @end
