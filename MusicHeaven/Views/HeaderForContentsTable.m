@@ -12,7 +12,8 @@
 
 @implementation HeaderForContentsTable
 
-@synthesize headerImageView = _headerImageView;
+@synthesize headerImageView     = _headerImageView;
+@synthesize dismissContentsBtn  = _dismissContentsBtn;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -21,6 +22,12 @@
         // Initialization code
         self.headerImageView = [[UIImageView alloc]initWithFrame:TableHeaderFrame];
         [self addSubview:self.headerImageView];
+        
+        self.dismissContentsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_dismissContentsBtn setBackgroundImage:[UIImage imageNamed:@"jiaochaanniu.png"] forState:UIControlStateNormal];
+        [_dismissContentsBtn setBackgroundImage:[UIImage imageNamed:@"jiaochaanniuHighLighted.png"] forState:UIControlStateHighlighted];
+        [_dismissContentsBtn setFrame:CGRectMake(270, 10, 40, 40)];
+        [self addSubview:_dismissContentsBtn];
     }
     return self;
 }

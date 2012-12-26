@@ -8,6 +8,8 @@
 
 #import "RootViewController.h"
 
+#define PagePlayButtonFrame CGRectMake(668, 924, 44, 44)
+
 @interface RootViewController ()
 
 @end
@@ -21,16 +23,18 @@
             loadingIndicator                = _loadingIndicator,
             swipeLeft                       = _swipeLeft,
             swipeRight                      = _swipeRight,
-            singleTap                       = _singleTap,
+            doubleTap                       = _doubleTap,
             currentPageNumber               = _currentPageNumber,
             indexOfSpecifiedColume          = _indexOfSpecifiedColume,
             indexOfFileInSpecifiedColume    = _indexOfFileInSpecifiedColume,
             allFilesCounted                 = _allFilesCounted,
             allColumnsCounted               = _allColumnsCounted,
             swipeDirection                  = _swipeDirection,
+            isPlaying                       = _isPlaying,
             isShowNavBar                    = _isShowNavBar,
             popoverContentsVC               = _popoverContentsVC,
-            contentsVC                      = _contentsVC;
+            contentsVC                      = _contentsVC,
+            pagePlayerBtn                   = _pagePlayerBtn;
 
 - (id)init
 {
@@ -46,8 +50,8 @@
         self.allFilesCounted = 0;
         
         self.isShowNavBar = YES;
+        self.isPlaying = NO;
         
-                
         //custom window
         
         if (!_data) {
@@ -74,13 +78,13 @@
         self.swipeRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeToRight)];     //向右滑动
         [_swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
         
-        self.singleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showsOrHidesBar)];
-        _singleTap.delegate = self;
-        _singleTap.cancelsTouchesInView = NO;
+        self.doubleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showsOrHidesBar)];
+        _doubleTap.delegate = self;
+        _doubleTap.cancelsTouchesInView = NO;
         
-        [_singleTap setNumberOfTapsRequired:1];
-        [_singleTap setNumberOfTouchesRequired:1];
-        [_singleTap setCancelsTouchesInView:NO];
+        [_doubleTap setNumberOfTapsRequired:2];
+        [_doubleTap setNumberOfTouchesRequired:1];
+        [_doubleTap setCancelsTouchesInView:NO];
         
 //        NSLog(@"initWithNibName-----%f", self.view.frame.size.width);
 //        NSLog(@"initWithNibName-----%f", self.view.frame.size.height);
@@ -116,10 +120,16 @@
         
         [self.webView addGestureRecognizer:self.swipeLeft];
         [self.webView addGestureRecognizer:self.swipeRight];
-        [self.webView addGestureRecognizer:self.singleTap];
+        [self.webView addGestureRecognizer:self.doubleTap];
         
         [_webView scalesPageToFit]; 
         
+        self.pagePlayerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_pagePlayerBtn setFrame:PagePlayButtonFrame];
+        [_pagePlayerBtn setBackgroundImage:[UIImage imageNamed:@"bofang.png"] forState:UIControlStateNormal];
+        [_pagePlayerBtn addTarget:self action:@selector(pagePlayBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [_webView addSubview:self.pagePlayerBtn];
     }
     return self;
 }
@@ -228,15 +238,18 @@
 {    
     NSLog(@"--- %@",NSStringFromSelector(_cmd));
     
-    if (self.webViewNew == nil) {
+    if (self.webViewNew == nil && _currentPageNumber < _allFilesCounted -1) {
+        NSLog(@"--- --- self.webViewNew == nil");
         self.webViewNew = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         _webViewNew.delegate = self;
         [(UIScrollView *)[[_webViewNew subviews] objectAtIndex:0] setBounces:NO];
         [_webViewNew addSubview:self.loadingView];
         _webViewNew.scalesPageToFit = YES;
+        [_webViewNew addSubview:self.pagePlayerBtn];
     }
+
     
-    [self.webViewNew addGestureRecognizer:self.singleTap];
+    [self.webViewNew addGestureRecognizer:self.doubleTap];
     
     if (self.loadingView) {
         [self.webViewNew addSubview:self.loadingView];
@@ -245,7 +258,7 @@
     
     if (_currentPageNumber < _allFilesCounted -1)
     {
-//        NSLog(@"_currentPageNumber < _allFilesCounted");
+        NSLog(@"_currentPageNumber < _allFilesCounted");
         
         _currentPageNumber +=1;
         self.indexOfSpecifiedColume = [self getIndexOfColumn];
@@ -272,17 +285,18 @@
 {
     NSLog(@"--- %@",NSStringFromSelector(_cmd));
     
-    if (self.webViewNew == nil) {
-//        NSLog(@"--- self.webViewNew == ni");
+    if (self.webViewNew == nil && _currentPageNumber > 0) {
+        NSLog(@"--- self.webViewNew == nil");
         self.webViewNew = [[UIWebView alloc]init];
         _webViewNew.delegate = self;
         [_webViewNew addSubview:self.loadingView];
         [(UIScrollView *)[[_webViewNew subviews] objectAtIndex:0] setBounces:NO];
         _webViewNew.scalesPageToFit = YES;
         
+        [_webViewNew addSubview:self.pagePlayerBtn];
     }
     
-    [self.webViewNew addGestureRecognizer:self.singleTap];
+    [self.webViewNew addGestureRecognizer:self.doubleTap];
     
     if (self.loadingView) {
         [self.webViewNew addSubview:self.loadingView];
@@ -292,7 +306,7 @@
     
     if (_currentPageNumber > 0)
     {
-//        NSLog(@"--- self.dataIndex > 1");
+        NSLog(@"--- self.dataIndex > 1");
         
         _currentPageNumber -=1;
         
@@ -313,6 +327,16 @@
         
         [UIView commitAnimations];
         
+    }else{
+        NSLog(@"_currentPageNumber = %d",_currentPageNumber);
+//        [self.webView removeFromSuperview];
+//        self.webView = nil;
+//        self.webView = self.webViewNew;
+//        self.webViewNew = nil;
+        
+//        [self.webView addGestureRecognizer:self.swipeLeft];
+//        [self.webView addGestureRecognizer:self.swipeRight];
+//        [self.webView addSubview:self.pagePlayerBtn];
     }  
 }
 
@@ -445,6 +469,7 @@
     [_popoverContentsVC presentPopoverFromRect:aRect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
+
 - (void)playButtonPressed:(id)sender
 {
     
@@ -457,6 +482,20 @@
 
 - (void)backButtonPressed:(id)sender
 {
+    
+}
+
+- (void)pagePlayBtnPressed:(id)sender
+{
+    _isPlaying = !_isPlaying;
+    
+    if (_isPlaying) {
+        [self.pagePlayerBtn setBackgroundImage:[UIImage imageNamed:@"zanting.png"] forState:UIControlStateNormal];
+        [self.pagePlayerBtn setBackgroundImage:[UIImage imageNamed:@"zantinganniuHighLighted.png"] forState:UIControlStateHighlighted];
+    }else {
+        [self.pagePlayerBtn setBackgroundImage:[UIImage imageNamed:@"bofang.png"] forState:UIControlStateNormal];
+        [self.pagePlayerBtn setBackgroundImage:[UIImage imageNamed:@"bofangHighLighted.png"] forState:UIControlStateHighlighted];
+    }
     
 }
 
@@ -510,23 +549,26 @@
 {
 //    NSLog(@"-②-");
     
-    if (self.indexOfSpecifiedColume > index) 
+    if (self.indexOfSpecifiedColume > index)    //在目录列表中所选的栏目的序号比当前看到的栏目序号小，启动向右划动手势
     {
 //        NSLog(@"-③- ，self.indexOfSpecifiedColume = %d, self.swipeDirection == MHSwipeToRight",self.indexOfSpecifiedColume);
         self.swipeDirection = MHSwipeToRight;
         self.indexOfSpecifiedColume = index;
-    }else if (self.indexOfSpecifiedColume < index)
+        self.indexOfFileInSpecifiedColume = 0;
+    }else if (self.indexOfSpecifiedColume < index)  //在目录列表中所选的栏目的序号比当前看到的栏目序号大，启动向左划动手势
     {
 //        NSLog(@"-④- ，self.indexOfSpecifiedColume = %d, self.swipeDirection == MHSwipeToRight",self.indexOfSpecifiedColume);
 //        NSLog(@"-④- self.swipeDirection == MHSwipeToLeft");
         self.swipeDirection = MHSwipeToLeft;
         self.indexOfSpecifiedColume = index;
+        self.indexOfFileInSpecifiedColume = 0;
     }else {
-        if (self.indexOfFileInSpecifiedColume != 0) 
+        if (self.indexOfFileInSpecifiedColume != 0) //在目录列表中所选的栏目的序号与当前看到的栏目序号相等，但不是该栏目第一篇，启动向右划动手势
         {
 //            NSLog(@"-⑤- self.swipeDirection == MHSwipeToRight");
             self.swipeDirection = MHSwipeToRight;
             self.indexOfSpecifiedColume = index;
+            self.indexOfFileInSpecifiedColume = 0;
         }else 
         {
             self.swipeDirection = MHSwipeToNone;
@@ -537,7 +579,6 @@
     if (self.swipeDirection == MHSwipeToLeft) 
     {
        
-        
         if (self.webViewNew == nil) {
             self.webViewNew = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
             _webViewNew.delegate = self;
@@ -546,7 +587,8 @@
             _webViewNew.scalesPageToFit = YES;
         }
         
-        [self.webViewNew addGestureRecognizer:self.singleTap];
+        [self.webViewNew addGestureRecognizer:self.doubleTap];
+        [_webViewNew addSubview:self.pagePlayerBtn];
         
         if (self.loadingView) {
             [self.webViewNew addSubview:self.loadingView];
@@ -580,7 +622,8 @@
             _webViewNew.scalesPageToFit = YES;
         }
         
-        [self.webViewNew addGestureRecognizer:self.singleTap];
+        [self.webViewNew addGestureRecognizer:self.doubleTap];
+        [_webViewNew addSubview:self.pagePlayerBtn];
         
         if (self.loadingView) {
             [self.webViewNew addSubview:self.loadingView];
@@ -605,6 +648,18 @@
         [UIView commitAnimations];
 
     }
+
+    NSUInteger aNumber = 0;
+    
+    if (index > 0) {
+        for (int i = index - 1; i >= 0; i--) {
+            aNumber += [[self.data.allPacksArray objectAtIndex:i] count];
+        }
+        self.currentPageNumber = aNumber;
+    }else {
+        self.currentPageNumber = 0;
+    }
+    
 }
 
 - (void)dismissContentsViewController

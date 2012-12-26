@@ -33,7 +33,7 @@ typedef enum
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeLeft;
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeRight;
-@property (nonatomic, strong) UITapGestureRecognizer *singleTap;
+@property (nonatomic, strong) UITapGestureRecognizer *doubleTap;
 
 @property (nonatomic, assign) NSUInteger currentPageNumber;         //当前页码
 @property (nonatomic, assign) NSUInteger indexOfSpecifiedColume;    //当前专辑序号
@@ -44,9 +44,12 @@ typedef enum
 @property (nonatomic, assign) NSUInteger swipeDirection;
 
 @property (nonatomic, assign) BOOL isShowNavBar;
+@property (nonatomic, assign) BOOL isPlaying;
 
 @property (nonatomic, strong) ContentsViewController *contentsVC;
 @property (nonatomic, strong) UIPopoverController *popoverContentsVC;
+
+@property (nonatomic, strong) UIButton *pagePlayerBtn;
 
 
 - (void)swipeToLeft;
@@ -64,5 +67,6 @@ typedef enum
 - (void)playButtonPressed:(id)sender;
 - (void)settingButtonPressed:(id)sender;
 - (void)backButtonPressed:(id)sender;
+- (void)pagePlayBtnPressed:(id)sender;
 
 @end

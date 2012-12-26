@@ -11,5 +11,6 @@
 @interface HeaderForContentsTable : UIView
 
 @property (nonatomic, strong) UIImageView *headerImageView;
+@property (nonatomic, strong) UIButton *dismissContentsBtn;
 
 @end

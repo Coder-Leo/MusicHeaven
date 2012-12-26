@@ -80,11 +80,11 @@ static DataModal *defaultModal;
         
         self.allColumnTrumbsArray = [[NSBundle mainBundle]pathsForResourcesOfType:@"png" inDirectory:@"images/ColumnTrumbs"];
         
-//        for (NSString *imageName in self.allColumnTrumbsArray)
-//        {
-//            NSArray *namePathArray = [imageName componentsSeparatedByString:@"/"];
-//            NSLog(@"--==--== %@",[namePathArray lastObject]);
-//        }
+        for (NSString *imageName in self.allColumnTrumbsArray)
+        {
+            NSArray *namePathArray = [imageName componentsSeparatedByString:@"/"];
+            NSLog(@"--==--== %@",[namePathArray lastObject]);
+        }
     }
     
     return self;

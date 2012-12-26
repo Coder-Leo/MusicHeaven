@@ -26,9 +26,14 @@
     
     [navController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
     
-    [navController.navigationBar setTintColor:[UIColor colorWithRed:205.0f/255.0f green:192.0f/255.0f blue:176.0f/255.0f alpha:1.0]];
+    [navController.navigationBar setTintColor:[UIColor colorWithWhite:1.0 alpha:0.0/*colorWithRed:205.0f/255.0f green:192.0f/255.0f blue:176.0f/255.0f alpha:1.0*/]];
     [navController.navigationBar setTranslucent:YES];
-    navController.navigationBar.topItem.title = @"音乐天堂";
+    [[navController.navigationBar layer] setMasksToBounds:YES];
+    
+    UIImageView *titleView = [[UIImageView alloc]initWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"musicheaven" ofType:@"png" inDirectory:@"images/NavigationTitleView"]]];
+    [titleView setFrame:CGRectMake(0, 0, 162, 32)];
+    
+    navController.navigationBar.topItem.titleView = titleView;
     
     
     [_window setRootViewController:navController];

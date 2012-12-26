@@ -41,6 +41,7 @@
 		04924680168924780036A923 /* ContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0492467C168924780036A923 /* ContentsViewController.m */; };
 		04924681168924780036A923 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0492467E168924780036A923 /* RootViewController.m */; };
 		8B078FA11689688B00818304 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 8B078FA01689688B00818304 /* images */; };
+		8B9BDC50168AE8D200430DBC /* CustomSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BDC4F168AE8D200430DBC /* CustomSwipeGestureRecognizer.m */; };
 		8BAB16FC1682B57000F37F74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAB16FB1682B57000F37F74 /* UIKit.framework */; };
 		8BAB16FE1682B57000F37F74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAB16FD1682B57000F37F74 /* Foundation.framework */; };
 		8BAB17001682B57000F37F74 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAB16FF1682B57000F37F74 /* CoreGraphics.framework */; };
@@ -91,6 +92,8 @@
 		0492467D168924780036A923 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		0492467E168924780036A923 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		8B078FA01689688B00818304 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		8B9BDC4E168AE8D200430DBC /* CustomSwipeGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSwipeGestureRecognizer.h; sourceTree = "<group>"; };
+		8B9BDC4F168AE8D200430DBC /* CustomSwipeGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSwipeGestureRecognizer.m; sourceTree = "<group>"; };
 		8BAB16F71682B57000F37F74 /* MusicHeaven.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicHeaven.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BAB16FB1682B57000F37F74 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BAB16FD1682B57000F37F74 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -188,9 +191,19 @@
 			path = ../../../GITworkspace/MusicHeaven/MusicHeaven/ViewControllers;
 			sourceTree = "<group>";
 		};
+		8B9BDC4D168AE87F00430DBC /* CustomGestureRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				8B9BDC4E168AE8D200430DBC /* CustomSwipeGestureRecognizer.h */,
+				8B9BDC4F168AE8D200430DBC /* CustomSwipeGestureRecognizer.m */,
+			);
+			name = CustomGestureRecognizer;
+			sourceTree = "<group>";
+		};
 		8BAB16EC1682B57000F37F74 = {
 			isa = PBXGroup;
 			children = (
+				8B9BDC4D168AE87F00430DBC /* CustomGestureRecognizer */,
 				8B078FA01689688B00818304 /* images */,
 				8BAB17121682B71F00F37F74 /* html */,
 				8BAB17011682B57000F37F74 /* MusicHeaven */,
@@ -339,6 +352,7 @@
 				0492467F168924780036A923 /* AppDelegate.m in Sources */,
 				04924680168924780036A923 /* ContentsViewController.m in Sources */,
 				04924681168924780036A923 /* RootViewController.m in Sources */,
+				8B9BDC50168AE8D200430DBC /* CustomSwipeGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,7 +376,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: GAN XIAN";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: GAN XIAN";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -377,6 +392,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "FAAACED6-A210-467C-8920-156B28690196";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FAAACED6-A210-467C-8920-156B28690196";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -388,7 +405,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: GAN XIAN";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: GAN XIAN";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -397,6 +415,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "FAAACED6-A210-467C-8920-156B28690196";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FAAACED6-A210-467C-8920-156B28690196";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -406,10 +426,14 @@
 		8BAB17101682B57100F37F74 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: GAN XIAN";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: GAN XIAN";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MusicHeaven/MusicHeaven-Prefix.pch";
 				INFOPLIST_FILE = "MusicHeaven/MusicHeaven-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "FAAACED6-A210-467C-8920-156B28690196";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FAAACED6-A210-467C-8920-156B28690196";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -417,10 +441,14 @@
 		8BAB17111682B57100F37F74 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: GAN XIAN";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: GAN XIAN";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MusicHeaven/MusicHeaven-Prefix.pch";
 				INFOPLIST_FILE = "MusicHeaven/MusicHeaven-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "FAAACED6-A210-467C-8920-156B28690196";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FAAACED6-A210-467C-8920-156B28690196";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

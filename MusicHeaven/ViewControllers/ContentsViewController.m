@@ -76,17 +76,14 @@
     NSUInteger row = [indexPath row];
     NSUInteger specIndex = 0;
     
-    if (row == 0) {
-        specIndex = row;
-    }else {
-        specIndex =row + 1;
-    }
+    specIndex = row * 2;
 
 //    if ([self allTrumbsArray])
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(getColumnTrumbsImageWithDataSource:)]) {
         self.allTrumbsArray = [self.dataSource getColumnTrumbsImageWithDataSource:self.dataSource];
+        NSLog(@"===== %@",self.allTrumbsArray);
         UIImage *trumbImage = [UIImage imageWithContentsOfFile:[_allTrumbsArray objectAtIndex:specIndex]];
-        //        NSLog(@"===== %@",trumbImage);
+//        NSLog(@"===== %@",trumbImage);
         [[cell columnImageView] setImage:trumbImage];
     }  
     
@@ -121,6 +118,8 @@
     UIImage *headerImage = [UIImage imageWithContentsOfFile:headerImgPath];
 //    NSLog(@"② !!!%@",headerImage);
     [header.headerImageView setImage:headerImage];
+    
+    [header.dismissContentsBtn addTarget:self.dataSource action:@selector(dismissContentsViewController) forControlEvents:UIControlEventTouchUpInside];
   
     return header;
 }
