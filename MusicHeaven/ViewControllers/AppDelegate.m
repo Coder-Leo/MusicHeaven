@@ -30,6 +30,7 @@
     NSUInteger currentPageNumber = [[_defaults objectForKey:@"currentPageNumber"] integerValue];
     NSUInteger indexOfSpecifiedColume = [[_defaults objectForKey:@"indexOfColumn"] integerValue];
     NSUInteger indexOfFileInSpecifiedColumn = [[_defaults objectForKey:@"indexOfFileInSpecifiedColumn"] integerValue];
+    
     self.rootVC.currentPageNumber = currentPageNumber;
     self.rootVC.indexOfSpecifiedColume = indexOfSpecifiedColume;
     self.rootVC.indexOfFileInSpecifiedColume = indexOfFileInSpecifiedColumn;
