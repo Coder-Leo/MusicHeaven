@@ -15,4 +15,6 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) RootViewController *rootVC;
 
+@property (strong, nonatomic) NSUserDefaults *defaults;
+
 @end

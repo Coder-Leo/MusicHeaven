@@ -10,6 +10,7 @@
 #import "DataModal.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ContentsViewController.h"
+#import "CustomSwipeGR.h"
 
 typedef enum
 {
@@ -33,6 +34,8 @@ typedef enum
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeLeft;
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeRight;
+//@property (nonatomic, strong) CustomSwipeGR *swipeLeft;
+//@property (nonatomic, strong) CustomSwipeGR *swipeRight;
 @property (nonatomic, strong) UITapGestureRecognizer *doubleTap;
 
 @property (nonatomic, assign) NSUInteger currentPageNumber;         //当前页码

@@ -41,7 +41,7 @@
 		04924680168924780036A923 /* ContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0492467C168924780036A923 /* ContentsViewController.m */; };
 		04924681168924780036A923 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0492467E168924780036A923 /* RootViewController.m */; };
 		8B078FA11689688B00818304 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 8B078FA01689688B00818304 /* images */; };
-		8B9BDC50168AE8D200430DBC /* CustomSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BDC4F168AE8D200430DBC /* CustomSwipeGestureRecognizer.m */; };
+		8B9BDC53168AF1F500430DBC /* CustomSwipeGR.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9BDC52168AF1F500430DBC /* CustomSwipeGR.m */; };
 		8BAB16FC1682B57000F37F74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAB16FB1682B57000F37F74 /* UIKit.framework */; };
 		8BAB16FE1682B57000F37F74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAB16FD1682B57000F37F74 /* Foundation.framework */; };
 		8BAB17001682B57000F37F74 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAB16FF1682B57000F37F74 /* CoreGraphics.framework */; };
@@ -92,8 +92,8 @@
 		0492467D168924780036A923 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		0492467E168924780036A923 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		8B078FA01689688B00818304 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
-		8B9BDC4E168AE8D200430DBC /* CustomSwipeGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSwipeGestureRecognizer.h; sourceTree = "<group>"; };
-		8B9BDC4F168AE8D200430DBC /* CustomSwipeGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSwipeGestureRecognizer.m; sourceTree = "<group>"; };
+		8B9BDC51168AF1F500430DBC /* CustomSwipeGR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSwipeGR.h; sourceTree = "<group>"; };
+		8B9BDC52168AF1F500430DBC /* CustomSwipeGR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSwipeGR.m; sourceTree = "<group>"; };
 		8BAB16F71682B57000F37F74 /* MusicHeaven.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicHeaven.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BAB16FB1682B57000F37F74 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BAB16FD1682B57000F37F74 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -194,8 +194,8 @@
 		8B9BDC4D168AE87F00430DBC /* CustomGestureRecognizer */ = {
 			isa = PBXGroup;
 			children = (
-				8B9BDC4E168AE8D200430DBC /* CustomSwipeGestureRecognizer.h */,
-				8B9BDC4F168AE8D200430DBC /* CustomSwipeGestureRecognizer.m */,
+				8B9BDC51168AF1F500430DBC /* CustomSwipeGR.h */,
+				8B9BDC52168AF1F500430DBC /* CustomSwipeGR.m */,
 			);
 			name = CustomGestureRecognizer;
 			sourceTree = "<group>";
@@ -352,7 +352,7 @@
 				0492467F168924780036A923 /* AppDelegate.m in Sources */,
 				04924680168924780036A923 /* ContentsViewController.m in Sources */,
 				04924681168924780036A923 /* RootViewController.m in Sources */,
-				8B9BDC50168AE8D200430DBC /* CustomSwipeGestureRecognizer.m in Sources */,
+				8B9BDC53168AF1F500430DBC /* CustomSwipeGR.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

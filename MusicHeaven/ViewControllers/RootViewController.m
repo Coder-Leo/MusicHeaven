@@ -44,13 +44,21 @@
     if (self) 
     {
         // Custom initialization
-        self.indexOfSpecifiedColume = 0;            //指定从第一个栏目读入
-        self.currentPageNumber = 0;      //当前页码，指定从第一个栏目的第一个文件读入
-        self.indexOfFileInSpecifiedColume   = 0;
+//        self.indexOfSpecifiedColume = 0;            //指定从第一个栏目读入
+//        self.currentPageNumber = 0;      //当前页码，指定从第一个栏目的第一个文件读入
+//        self.indexOfFileInSpecifiedColume   = 0;
         self.allFilesCounted = 0;
         
         self.isShowNavBar = YES;
         self.isPlaying = NO;
+        
+//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//        
+//        NSInteger pageNumber = [[defaults objectForKey:@"currentPageNumber"] integerValue];
+//        
+//        NSLog(@"==-== %d",pageNumber);
+//        
+//        _currentPageNumber = pageNumber;
         
         //custom window
         
@@ -77,6 +85,14 @@
         
         self.swipeRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeToRight)];     //向右滑动
         [_swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+        
+//        self.swipeLeft = [[CustomSwipeGR alloc]initWithTarget:self action:@selector(swipeToLeft)];   //向左滑动
+//        [_swipeLeft setDirection:DirectionLeft];
+//        [_swipeLeft setCancelsTouchesInView:YES];
+//        
+//        self.swipeRight = [[CustomSwipeGR alloc]initWithTarget:self action:@selector(swipeToRight)];     //向右滑动
+//        [_swipeRight setDirection:DirectionRight];
+//        [_swipeRight setCancelsTouchesInView:YES];
         
         self.doubleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showsOrHidesBar)];
         _doubleTap.delegate = self;
@@ -393,24 +409,24 @@
     NSMutableArray *numbersOfPageForAllColumnArr = [[NSMutableArray alloc]init];
     
     for (int i = 0; i < _allColumnsCounted; i++) {
-        NSUInteger totlePageNumberWithSpecifiedColumn = [[_data.allPacksArray objectAtIndex:i] count];
-        NSNumber *aNumber = [NSNumber numberWithUnsignedInteger:totlePageNumberWithSpecifiedColumn];
+        NSUInteger totlePageNumberWithSpecifiedColumn = [[_data.allPacksArray objectAtIndex:i] count];      //计算每个栏目各有多少页
+        NSNumber *aNumber = [NSNumber numberWithUnsignedInteger:totlePageNumberWithSpecifiedColumn];    //将每个栏目的页数存入number对象
         
-        [numbersOfPageForAllColumnArr addObject:aNumber];  //将每个专辑的文件数存入数组
+        [numbersOfPageForAllColumnArr addObject:aNumber];  //将每个专辑的文件（页）数存入数组
     }
     
     NSUInteger pages = 0;
     
     for (int i = 0; i < [numbersOfPageForAllColumnArr count]; i++) 
     {
-        NSUInteger totlePagesOfTheColumn = [[numbersOfPageForAllColumnArr objectAtIndex:i] integerValue];
+        NSUInteger totlePagesOfTheColumn = [[numbersOfPageForAllColumnArr objectAtIndex:i] integerValue];   //取出每个对应栏目的总页数
         pages +=totlePagesOfTheColumn;
         
         if (self.currentPageNumber + 1 > pages) {
-//            break;
+//            break;        //如果当前页的页码大于所在栏目总页数，则进入下一栏目继续循环
         }
         else {
-        return i;
+        return i;       //如果当前页的页码等于或者小于所在栏目总页数，则返回这个栏目的序号数
         }
         
     }
@@ -423,10 +439,10 @@
     NSMutableArray *numbersOfPageForAllColumnArr = [[NSMutableArray alloc]init];
     
     for (int i = 0; i < _allColumnsCounted; i++) {
-        NSUInteger totlePageNumberWithSpecifiedColumn = [[_data.allPacksArray objectAtIndex:i] count];
-        NSNumber *aNumber = [NSNumber numberWithUnsignedInteger:totlePageNumberWithSpecifiedColumn];
+        NSUInteger totlePageNumberWithSpecifiedColumn = [[_data.allPacksArray objectAtIndex:i] count];      //得到每一个栏目的总页数
+        NSNumber *aNumber = [NSNumber numberWithUnsignedInteger:totlePageNumberWithSpecifiedColumn];        //将得到每一个栏目的总页数存入number对象
         
-        [numbersOfPageForAllColumnArr addObject:aNumber];  //将每个专辑的文件数存入数组
+        [numbersOfPageForAllColumnArr addObject:aNumber];  //将每个专辑的文件数对应的number对象存入数组
     }
     
     NSUInteger pages = 0;
@@ -438,11 +454,11 @@
         pages +=totlePagesOfTheColumn;
         
         if (self.currentPageNumber + 1 > pages) {
-            pagesWithoutPlus = pages;
+            pagesWithoutPlus = pages;   //如果当前页页码大于这个栏目的的总页数
             //            break;
         }
         else {
-            return (_currentPageNumber - pagesWithoutPlus);
+            return (_currentPageNumber - pagesWithoutPlus); //如果当前页页码小于或者等于这个栏目的的总页数，返回该栏目的第N篇文章序号数
         }
         
     }
@@ -497,12 +513,6 @@
         [self.pagePlayerBtn setBackgroundImage:[UIImage imageNamed:@"bofangHighLighted.png"] forState:UIControlStateHighlighted];
     }
     
-}
-
-#pragma mark - TapDetectingWindowDelegate Methods
-- (void) userDidTapWebView:(id)tapPoint
-{
-    [self showsOrHidesBar];
 }
 
 
